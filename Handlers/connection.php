@@ -3,7 +3,7 @@ try{
     $conn = new PDO("mysql:host=localhost;dbname=easy_road", "root", "");
     // echo "connected";
 }
-catch(PDOEception $a){
+catch(PDOException $a){
     echo "Note connected";
 
 }

@@ -92,6 +92,25 @@
 <div>
 </div>
 
+<?php
+session_start();
+if($_SESSION['role']=="admin"){
+
+?>
+<div>
+  <a href="register-police-officer.php"><i class="fa fa-user-plus m-4"></i> Register Officer</a>
+</div>
+
+<div>
+  <a href="violation.php"><i class="fa fa-file m-4"></i> Add Violation</a>
+</div>
+
+<?php
+}
+?>
+
+
+
 <div>
   <a href="setting.php"><i class="fa fa-cog m-4"></i> Setting</a>
 </div>

@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
   $res = $stmt->fetch();
   $police_id = $res['user_id'];
    
-    echo $police_id;
+   //  echo $police_id;
 
 // nime insert data from form to data base 
    $stmt = $conn->prepare("INSERT INTO `driver`(`name`, `age`, `gender`, `living_place`, `license_number`, `police_man_id`)
@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
 
   
 
-//    header('location:../accuse-page-02.php');
+   header('location:../accuse-page-02.php');
     
 }
 

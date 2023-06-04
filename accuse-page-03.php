@@ -61,6 +61,7 @@
 
 
 
+        
         <!-- ------------------------------Violation Table---------------------- -->
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Search Violations" aria-label="Search Violations"
@@ -84,71 +85,35 @@
             </tr>
           </thead>
           <tbody>
+
+
+          <?php
+require("./Handlers/connection.php");
+$stmt = $conn->prepare("SELECT * FROM `violation`");
+$stmt->execute();
+$result=$stmt->fetchAll();
+$no = 0;
+foreach($result as $res){
+
+$no++;
+
+
+  ?>
             <tr>
-              <td>1</td>
-              <td>Speeding</td>
-              <td>Minor</td>
-              <td>$50</td>
+            <td value="#"><?php  echo $no; ?></td>
+              <td value="#"><?php  echo $res['violation'] ?></td>
+              <td value="#"><?php  echo $res['vtype'] ?></td>
+              <td value="#"><b>Tsh </b><?php  echo $res['penalt'] ?></td>
               <td><input type="checkbox"></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Running Red Light</td>
-              <td>Major</td>
-              <td>$200</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Seat Belt Violation</td>
-              <td>Minor</td>
-              <td>$25</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Seat Belt Violation</td>
-              <td>Minor</td>
-              <td>$25</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Seat Belt Violation</td>
-              <td>Minor</td>
-              <td>$25</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Seat Belt Violation</td>
-              <td>Minor</td>
-              <td>$25</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Seat Belt Violation</td>
-              <td>Minor</td>
-              <td>$25</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Distracted Driving</td>
-              <td>Major</td>
-              <td>$100</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Seat Belt Violation</td>
-              <td>Minor</td>
-              <td>$25</td>
-              <td><input type="checkbox"></td>
-            </tr>
+          
+            <?php
+}
+    ?>
+
           </tbody>
         </table>
+
         </div>
 
         <script>

@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <?php include 'links.php'; ?>
 
-</head>
+<?php 
+
+// creating a session 
+    session_start();
+    if(!isset($_SESSION['role'])){
+// if session is not set yet retun a user to a login form through link down below 
+      header('location:index.php');
+    }
+    
+    // links included
+    include 'links.php'; 
+    ?>
+
+
 <body class="item-align-center">
 
 <!-- main container -->
@@ -62,6 +67,8 @@
 
     
 <!-- Carousel -->
+
+
 <div id="demo" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ul class="carousel-indicators">
@@ -115,6 +122,14 @@
 
   <hr>
  
+
+  <!-- slide buttons -->
+  <?php
+if($_SESSION['role']=="admin"){
+
+?>
+
+
   <div class="table-responsive">
     <div class="d-flex flex-row mb-3 mt-1">
 
@@ -150,13 +165,24 @@
 
     </div>    
   </div>
-
-
+<!-- end of the slide buttons -->
+  <?php
+}
+?>
 
 
 <!-- Police officer registration form -->
+<!-- we are going to show this part to police officer only  -->
 
-  <form class="#" method="POST" action="./Handlers/accuse-page-01.php">
+<?php
+if($_SESSION['role']=="Chief_Officer"){
+
+?>
+<div class="d-flex justify-content-center"><p><b>Register Police Here</b></p></div>
+<hr>
+
+
+<form class="#" method="POST" action="./Handlers/register-police.php">
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12">
   <div class="form-group">
@@ -229,6 +255,79 @@
 
 
 </form>
+<?php
+}
+?>
+
+<!-- we are going to show that above part to police officer only  -->
+
+
+
+<hr>
+   
+
+
+<!-- Carousel -->
+<?php
+if($_SESSION['role']=="admin"){
+
+?>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+
+    </ul>
+  
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="Assets/img/picture 2.jpg" alt="picture one">
+
+        <div class="carousel-caption">
+            <h3>Updates!</h3>
+            <p>Here You can see all system updates</p>
+          </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="Assets/img/picture 1.jpg" alt="picture two">
+
+        <div class="carousel-caption">
+            <h3>News</h3>
+            <p>See all systemm news here</p>
+          </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="Assets/img/picture 3.jpg" alt="picture three">
+
+        <div class="carousel-caption">
+            <h3>Matukio</h3>
+            <p>Ona Taarifa Hapa</p>
+          </div>
+      </div>
+
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  
+  </div>
+
+  <?php
+}
+?>
+  <!-- Carousel End -->
 
 
 
