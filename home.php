@@ -172,7 +172,7 @@ if($_SESSION['role']=="admin"){
 
 
 <!-- Police officer registration form -->
-<!-- we are going to show this part to police officer only  -->
+<!-- -------------------Police Offiecer Section -------------------------------- -->
 
 <?php
 if($_SESSION['role']=="Chief_Officer"){
@@ -259,15 +259,14 @@ if($_SESSION['role']=="Chief_Officer"){
 }
 ?>
 
-<!-- we are going to show that above part to police officer only  -->
+<!-- -------------------Police Offiecer Section end -------------------------------- -->
 
 
 
 <hr>
    
 
-
-<!-- Carousel -->
+<!-- -------------------Admin Section -------------------------------- -->
 <?php
 if($_SESSION['role']=="admin"){
 
@@ -327,10 +326,28 @@ if($_SESSION['role']=="admin"){
   <?php
 }
 ?>
-  <!-- Carousel End -->
+<!-- -------------------Admin Section end -------------------------------- -->
 
 
+<!-- ----------------------Normal Police Secttion------------------------- -->
+<?php
+if($_SESSION['role']=="police_man"){
 
+?>
+
+
+<p>hapa pa polisi tu</p>
+<p>hapa pa polisi tu</p>
+
+<p>hapa pa polisi tu</p>
+
+<p>hapa pa polisi tu</p>
+
+
+  <?php
+}
+?>
+<!-- -----------------Normal Police Secttion end---------- -->
 
 
 

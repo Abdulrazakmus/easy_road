@@ -125,13 +125,6 @@
 
 
 
-
-        <!-- -----------------------footer buttons link--------------------  -->
-
-        <?php include 'footer-buttons.php'; ?>
-
-        <!-- -----------------------footer buttons link--------------------  -->
-
       </div>
     </div>
 

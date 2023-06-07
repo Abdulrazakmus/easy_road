@@ -9,15 +9,19 @@ if(isset($_POST['submit'])){
    $License_ID = $_POST['licenceID'];
    $Age = $_POST['age'];
    $Address = $_POST['address'];
-   $Phone_number = $_POST['phone-number'];
+   $phone_number = $_POST['phone-number'];
    $Gender = $_POST['gender'];
 
 
 //    tuna assign police na driver ( tuna anzisha session kw a ku define id yake )
 // nika start session 
+
+
    session_start();
    $User =  $_SESSION['userName'];
 //    echo $User;
+
+
    $stmt = $conn->prepare("SELECT *  FROM `user` WHERE `user_name` =:user");
    $stmt->execute(array(":user"=>$User));
 
@@ -27,10 +31,10 @@ if(isset($_POST['submit'])){
    //  echo $police_id;
 
 // nime insert data from form to data base 
-   $stmt = $conn->prepare("INSERT INTO `driver`(`name`, `age`, `gender`, `living_place`, `license_number`, `police_man_id`)
-   VALUES (:uname,:age, :gender, :place, :license, :PoliceID)");
+   $stmt = $conn->prepare("INSERT INTO `driver`(`name`, `age`, `gender`, `living_place`, `phone_number`, `license_number`, `police_man_id`)
+   VALUES (:uname,:age, :gender, :living_place, :phone_number, :license_number, :PoliceID)");
 
-   $stmt->execute(array(":uname"=>$full_name, ":age"=>$Age, ":gender"=>$Gender, ":place"=>$Address, ":license"=>$License_ID, ":PoliceID"=>$police_id));
+   $stmt->execute(array(":uname"=>$full_name, ":age"=>$Age, ":gender"=>$Gender, ":living_place"=>$Address, ":phone_number"=>$phone_number, ":license_number"=>$License_ID, ":PoliceID"=>$police_id));
 
 
   

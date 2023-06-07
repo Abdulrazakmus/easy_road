@@ -1,3 +1,24 @@
+<!-- searching section  -->
+
+<?php
+
+require("./Handlers/connection.php");
+$search = "";
+if (isset($_POST["search"]) && $_POST["search"] != ""){
+
+  $search = $_POST["search"];
+  $stmt = $conn->prepare("SELECT * FROM `violation` WHERE violation LIKE '%" . $search . "%'");
+
+}else{
+  $stmt = $conn->prepare("SELECT * FROM `violation`");
+
+}
+
+?>
+
+<!-- searching section ends -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,13 +84,19 @@
 
         
         <!-- ------------------------------Violation Table---------------------- -->
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search Violations" aria-label="Search Violations"
-            aria-describedby="basic-addon2" onkeyup="filterViolations()">
-          <div class="input-group-append">
-            <span class="input-group-text bg-primary" id="basic-addon2"><i class="fa fa-search text-white"></i></span>
-          </div>
-        </div>
+     <!-- Search Bar -->
+<form action="help.php" method="POST">
+
+<div class="input-group mb-3 mt-4">
+    <input type="text" class="form-control search" name="search" placeholder="Search"value="<?php echo $search; ?>" >
+    <div class="input-group-append">
+      
+    </span> <button class="btn btn-primary search"><i class="fa fa-search "></i></button> </span>
+    </div>
+  </div>
+</form>
+
+  <!-- Search Bar end -->
 
 
         <div class="table-responsive">

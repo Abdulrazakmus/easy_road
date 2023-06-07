@@ -59,27 +59,27 @@
         <hr>
 
         <!-- ---------------------This is Form-------------------- -->
-        <form class="mt-1">
+        <form class="mt-1"  method="POST" action="./Handlers/accuse-page-02.php">
 
           <div class="form-group m-4">
             <label for="full-name">
               <i class="fa fa-hashtag text-primary"></i> Vehicle Plate Number
             </label>
-            <input type="text" class="form-control" id="full-name" placeholder="Enter vehicle's plate number">
+            <input type="text" class="form-control"  placeholder="Enter vehicle's plate number" name="plate-no" required>
           </div>
 
           <div class="form-group m-4">
             <label for="full-name">
               <i class="fa fa-hashtag text-primary"></i> Root Number  <i>( optional )</i> 
             </label>
-            <input type="number" class="form-control" id="address" placeholder="Enter a vehicle's root number">
+            <input type="number" class="form-control" placeholder="Enter a vehicle's root number" name="root-no">
           </div>
 
           <div class="form-group m-4">
             <label for="full-name">
               <i class="fa fa-rainbow text-primary"></i> vehicle colour
             </label>
-            <input type="text" class="form-control" id="tribe" placeholder="Enter a vehicle's colour">
+            <input type="text" class="form-control" placeholder="Enter a vehicle's colour" name="vcolour">
           </div>
 
          <hr>

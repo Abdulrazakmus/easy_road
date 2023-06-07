@@ -1,6 +1,6 @@
 <?php
 require_once('connection.php');
-
+echo "takoooooooooooooooooooooo";
 ///tumechkkua data from form kwa njia ya post kwa kupitia button ya submit 
 
 if(isset($_POST['submit'])){
@@ -41,7 +41,7 @@ $stmt3->execute(array(":uuID"=>$id_ya_mwisho, ":uname"=>$full_name, ":gender"=>$
 
   
 
-   header('location:../register-police.php');
+   header('location:../home.php');
     
 
 

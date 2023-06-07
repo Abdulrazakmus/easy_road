@@ -1,3 +1,23 @@
+<!-- searching section  -->
+
+<?php
+
+require("./Handlers/connection.php");
+$search = "";
+if (isset($_POST["search"]) && $_POST["search"] != ""){
+
+  $search = $_POST["search"];
+  $stmt = $conn->prepare("SELECT * FROM `violation` WHERE violation LIKE '%" . $search . "%'");
+
+}else{
+  $stmt = $conn->prepare("SELECT * FROM `violation`");
+
+}
+
+?>
+
+<!-- searching section ends -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,13 +71,17 @@
 
 
 <!-- Search Bar -->
+<form action="help.php" method="POST">
+
 <div class="input-group mb-3 mt-4">
-    <input type="text" class="form-control search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+    <input type="text" class="form-control search" name="search" placeholder="Search"value="<?php echo $search; ?>" >
     <div class="input-group-append">
-    </span> <a href="#" class="btn btn-primary search"><i class="fa fa-search "></i></a> </span>
-      <!-- <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span> -->
+      
+    </span> <button class="btn btn-primary search"><i class="fa fa-search "></i></button> </span>
     </div>
   </div>
+</form>
+
   <!-- Search Bar end -->
 
     
@@ -65,41 +89,54 @@
 
   <hr>
  
-  <!-- <div class="table-responsive">
-    <div class="d-flex flex-row mb-3 mt-3">
+          
+        <!-- ------------------------------Violation Table---------------------- -->
+      
+        <div class="table-responsive">
 
-        <div class="col-lg-4 col-md-4 col-6 pt-4">
-            <div class="card-content shadow rounded">
-    <div class="icons text-center">
+        <table class="table table-bordered table-striped">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>V/N</th>
+              <th>Violation</th>
+              <th>Type</th>
+              <th>Penalty</th>
+              <th>Check</th>
+            </tr>
+          </thead>
+          <tbody>
 
-        <a href="#" > <i class="fas fa-phone"></i></a>    
+
+          <?php
+
+$stmt->execute();
+$result=$stmt->fetchAll();
+$no = 0;
+foreach($result as $res){
+
+$no++;
+
+
+  ?>
+            <tr>
+            <td value="#"><?php  echo $no; ?></td>
+              <td value="#"><?php  echo $res['violation'] ?></td>
+              <td value="#"><?php  echo $res['vtype'] ?></td>
+              <td value="#"><b>Tsh </b><?php  echo $res['penalt'] ?></td>
+              <td><input type="checkbox"></td>
+            </tr>
+          
+            <?php
+}
+    ?>
+
+          </tbody>
+        </table>
+
         </div>
-            </div>
-    
-        </div>
 
-        <div class="col-lg-4 col-md-4 col-6 pt-4">
-            <div class="card-content shadow rounded">
-                <div class="icons text-center">
+<hr>
 
-                    <a href="#" > <i class="fas fa-phone"></i></a>    
-                    </div>
-             </div>
-    
-        </div>
-
-        <div class="col-lg-4 col-md-4 col-6 pt-4">
-            <div class="card-content shadow rounded">
-                <div class="icons text-center">
-
-                    <a href="#" > <i class="fas fa-phone"></i></a>    
-                    </div>
-            </div>
-    
-        </div>
-
-    </div>    
-  </div> -->
 
 <!-- -----------------------footer buttons link--------------------  -->
 
