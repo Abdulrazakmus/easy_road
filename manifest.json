@@ -1,0 +1,26 @@
+{
+  "background_color": "#ffffff",
+  "description": "",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "abdulrazak.co",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "abdulrazak.co",
+  "start_url": "/index.php",
+  "theme_color": "#ffffff",
+  "categories": [
+    "news",
+    "social"
+  ],
+  "screenshots": [],
+  "icons": [],
+  "shortcuts": [],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://blue-emarket.netlify.app/",
+      "id": ""
+    }
+  ]
+}

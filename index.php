@@ -11,6 +11,9 @@
  <link href="Asset/css/bootstrap.css" rel="stylesheet">
  <link href="Assets/css/style.css" rel="stylesheet">
 
+<!-- manifest file -->
+<link rel="manifest" href="./manifest.json">
+
  <!-- online links -->
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -72,6 +75,6 @@
 <script src="Assets/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 <!-- end of online JS files -->
 
-<script src="js/app.js"></script>
+<script src="./Assets/js/app.js"></script>
 </body>
 </html
