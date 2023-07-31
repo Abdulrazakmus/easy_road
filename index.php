@@ -76,5 +76,10 @@
 <!-- end of online JS files -->
 
 <script src="./Assets/js/app.js"></script>
+<script>
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('sw.js')
+  }
+</script>
 </body>
 </html
