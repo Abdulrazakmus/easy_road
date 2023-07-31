@@ -45,7 +45,7 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
       <div class="col-lg-4 col-md-6">
 
         <!-- first row which have icons and name on top -->
-        <div class="row">
+        <div class="row" id="header-mobile">
 
           <div class="col-lg-4 col-md-4 col-4">
             <div class="nav-item">
@@ -73,7 +73,7 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
         <!-- end of the firs row -->
 
         <hr>
-        <div class="text-center">
+        <div class="text-center pt-3">
           <i class="fa fa-book text-primary"></i>
           <h6>Violations</h6>
         </div>
@@ -97,6 +97,9 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
 </form>
 
   <!-- Search Bar end -->
+
+
+  <div id="v-table">
 
 <form action="./Handlers/accuse-page-03.php" method="post">
         <div class="table-responsive">
@@ -149,15 +152,17 @@ $no++;
 
         <hr>
 
-        <!-- <a class="text-white" href="accuse-page-04.php"> -->
-          <button type="submit" name="submit" class="btn btn-primary shadow float-right">Next <i class="fas fa-arrow-right"></i></button>
-        <!-- </a> -->
-
+        <div id="next-back-btn"> 
+        <button type="submit" name="submit" class="btn btn-primary shadow float-right">Next <i class="fas fa-arrow-right"></i></button>
         <a class="text-white" href="accuse-page-02.php">
           <button type="submit" class="btn btn-primary shadow float-left"><i class="fas fa-arrow-left"></i> Back </a>
         </button>
         </a>
+        </div>
+         
 </form>  
+</div>
+
 
         <!-- -----------------------footer buttons link--------------------  -->
 

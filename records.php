@@ -55,7 +55,7 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
       <div class="col-lg-4 col-md-6">
 
         <!-- first row which have icons and name on top -->
-        <div class="row">
+        <div class="row" id="header-mobile">
 
           <div class="col-lg-4 col-md-4 col-4">
             <div class="nav-item">
@@ -127,7 +127,7 @@ Hapa uta search kuona record ya mtuhumiwa
 
 
           <?php
-          $stmt = $conn->prepare("SELECT * FROM `driver`, `violation` WHERE ");
+          $stmt = $conn->prepare("SELECT driver.name, driver.license_number, violation.violation, driver_violation.date FROM `driver` join driver_violation JOIN violation WHERE driver.driver_id = driver_violation.driver_id and violation.violation_id = driver_violation.violation_id;");
 
               $stmt->execute();
               $result = $stmt->fetchAll();
@@ -138,8 +138,8 @@ Hapa uta search kuona record ya mtuhumiwa
             <td value="#"><?php  echo $res['name'] ?></td>
             <td value="#"><?php  echo $res['license_number'] ?></td>
               <td value="#"><?php  echo $res['violation'] ?></td>
-              <td value="#"><?php  echo $res['vtype'] ?></td>
-              <td value="#"><b>Tsh </b><?php  echo $res['penalt'] ?></td>
+              <td value="#"><?php  echo $res['date'] ?></td>
+              <td value="#" class="btn btn-success"> Paid </td>
             </tr>
           
             <?php

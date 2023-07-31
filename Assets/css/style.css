@@ -126,29 +126,6 @@ width: 100%;
 
 
 
-/* Style the mobile footer container */
-/* .mobile-footer {
-    position: fixed;
-    bottom: 0; */
-    /* width: 100%; */
-    /* background-color: #333; */
-    /* color: white;
-    padding: 10px; */
-  /* } */
-  
-  /* Style the mobile footer buttons */
-  /* .mobile-footer a.btn {
-    display: block;
-    text-align: center;
-    color: white;
-  } */
-  
-  /* Style the mobile footer button icons */
-  /* .mobile-footer a.btn i {
-    font-size: 24px;
-  } */
-  
-
   .search{
     height: 40px;
   }
@@ -293,71 +270,6 @@ width: 350px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ------------------------foter buttons CSS---------------------------- */
-/* .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-  background-color: #f8f9fa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-} */
-
-/* .btn-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-} */
-
-/* .btn-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  color: #6c757d;
-  width: 20%;
-  padding: 5px;
-  transition: all 0.3s ease-in-out;
-} */
-
-/* .btn-footer:hover {
-  color: #000;
-  background-color: #f1f1f1;
-} */
-
-/* .btn-footer i {
-  font-size: 24px;
-  margin-bottom: 5px;
-} */
-
-/* .btn-label {
-  font-size: 12px;
-  text-align: center;
-  color: #000;
-} */
-/* ---------------footer buttons CSS ends her-------------------------- */
-
-
-
 /* -------------------------account page css--------------------------- */
 
 
@@ -422,4 +334,54 @@ width: 350px;
 
 .profile-card-wrapper .content .id-num {
   font-size: 13px;
+}
+
+
+
+@media (max-width: 767px){
+  .mobile-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+  }
+  #header-mobile{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    right: 16px;
+    z-index: 2;
+    background-color: #fff;
+    
+  }
+
+  section{
+    padding-top: 40px;
+  }
+  #reg-form{
+    height: 248px;
+    overflow-y: scroll;
+  }
+  #v-table{
+    height: 450px;
+    overflow-y: scroll;
+    width: 345px;
+
+  }
+
+  #next-back-btn{
+    padding-bottom:10px;
+    position: fixed;
+    bottom: 10px;
+    left: 15px;
+    right: 16px;
+    
+  }
+
+  #final-form{
+    height: 500px;
+    overflow-y: scroll;
+  }
+
 }

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-include 'links.php'; 
+include 'links.php';
 
 require("./Handlers/connection.php");
 // session_start();
@@ -12,7 +12,7 @@ AND driver_violation.driver_id = driver.driver_id
 AND violation.violation_id = bill.violation_id
 ");
 
-$stmt->execute(array(":dvID"=>$driverID));
+$stmt->execute(array(":dvID" => $driverID));
 // unset($_SESSION['driverID']);
 $res = $stmt->fetch();
 
@@ -33,7 +33,7 @@ $res = $stmt->fetch();
       <div class="col-lg-4 col-md-6">
 
         <!-- first row which have icons and name on top -->
-        <div class="row">
+        <div class="row" id="header-mobile">
 
           <div class="col-lg-4 col-md-4 col-4">
             <div class="nav-item">
@@ -71,182 +71,189 @@ $res = $stmt->fetch();
 
         <!-- time and by whom row -->
         <hr>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <b> <i class="fa fa-calendar text-primary"></i> Date:</b>
-            <input type="text" class="form-control"  value="<?php echo $res['date'] ?>">
+
+        <div id="final-form">
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-calendar text-primary"></i> Date:</b>
+              <input type="text" class="form-control" readonly value="<?php echo $res['date'] ?>">
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-user text-primary"></i> By:</b>
+              <input type="text" class="form-control" readonly value="<?php echo $res['user_name'] ?>">
+
+            </div>
+
+          </div>
+          <hr>
+
+
+          <!-- drivers information rows  -->
+          <div class="row mt-3">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-user text-primary"></i> Full name:</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <input type="text" class="form-control" id="full-name" value="<?php echo $res['name'] ?>">
+            </div>
+
           </div>
 
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <b> <i class="fa fa-user text-primary"></i> By:</b>
-            <input type="text" class="form-control"  value="<?php echo $res['user_name'] ?>">
+
+          <div class="row mt-3">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b><i class="fa fa-id-card text-primary"></i> Licence ID:</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <input type="text" class="form-control" id="full-name" value="<?php echo $res['license_number'] ?>">
+            </div>
 
           </div>
+
+
+          <div class="row mt-3">
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <b><i class="fa fa-child text-primary"></i> Age:</b>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <input type="number" class="form-control" id="full-name" value="<?php echo $res['age'] ?>">
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <b><i class="fas fa-venus-mars text-primary"></i> Gender:</b>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <input type="text" class="form-control" id="full-name" value="<?php echo $res['gender'] ?>">
+            </div>
+          </div>
+
+          <div class="row mt-3">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-user text-primary"></i> Phone Number:</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <input type="text" class="form-control" id="full-name" value="<?php echo $res['phone_number'] ?>">
+            </div>
+
+          </div>
+
+          <div class="row mt-3">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-map-marker text-primary"></i> Adress:</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <input type="text" class="form-control" id="full-name" value="<?php echo $res['living_place'] ?>">
+            </div>
+
+          </div>
+          <hr>
+
+          <!-- Vehicles informations row -->
+
+          <div class="row mt-3">
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <b><i class="fa fa-hashtag text-primary"></i>Plate No:</b>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <input type="text" class="form-control" id="full-name" value="<?php echo $res['vehicle_number'] ?>">
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <b><i class="fa fa-hashtag text-primary"></i> Root No:</b>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <input type="text" class="form-control" id="full-name" value="<?php echo $res['root_number'] ?>">
+            </div>
+          </div>
+
+          <hr>
+          <!-- violation row -->
+          <div class="row mt-3">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-file text-primary"></i> Violation:</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <input type="text" readonly class="form-control" id="full-name" value="<?php echo $res['violation'] ?>">
+            </div>
+
+          </div>
+
+
+          <div class="row mt-3">
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <b><i class="fa fa-list-alt text-primary"></i> Type:</b>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <input type="text" readonly class="form-control" id="full-name" value="<?php echo $res['vtype'] ?>">
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <b><i class="fa fa-ban text-primary"></i> Penalt:</b>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <input type="text" readonly class="form-control" id="full-name" value="<?php echo $res['penalt'] ?>">
+            </div>
+          </div>
+          <hr>
+          <!-- control number  -->
+          <div class="row mt-3">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-hashtag text-primary"></i> Control Number:</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <input type="text" class="form-control" readonly id="full-name" value="<?php
+                                                                                      if (isset($_GET['cotrol']) && $_GET['cotrol'] == "true") {
+                                                                                        $ctrlnum = "SU-" . time();
+                                                                                        echo $ctrlnum;
+                                                                                      }
+                                                                                      ?>">
+            </div>
+
+          </div>
+
+          <!-- receipt number  -->
+          <div class="row mt-3">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <b> <i class="fa fa-file text-primary"></i> Enter Reference:</b>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <input type="number" class="form-control" id="full-name" placeholder="enter reference number">
+            </div>
+
+          </div>
+
 
         </div>
-        <hr>
 
 
-        <!-- drivers information rows  -->
-        <div class="row mt-3">
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <b> <i class="fa fa-user text-primary"></i> Full name:</b>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['name'] ?>">
-          </div>
-
-        </div>
-
-
-        <div class="row mt-3">
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <b><i class="fa fa-id-card text-primary"></i> Licence ID:</b>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['license_number'] ?>">
-          </div>
-
-        </div>
-
-
-        <div class="row mt-3">
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <b><i class="fa fa-child text-primary"></i> Age:</b>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input type="number" class="form-control" id="full-name" value="<?php echo $res['age'] ?>">
-          </div>
-
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <b><i class="fas fa-venus-mars text-primary"></i> Gender:</b>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['gender'] ?>">
-          </div>
-        </div>
-
-        <div class="row mt-3">
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <b> <i class="fa fa-user text-primary"></i> Phone Number:</b>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['phone_number'] ?>">
-          </div>
-
-        </div>
-
-        <div class="row mt-3">
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <b> <i class="fa fa-map-marker text-primary"></i> Adress:</b>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['living_place'] ?>">
-          </div>
-
-        </div>
-        <hr>
-
-
-        <!-- Vehicles informations row -->
-
-        <div class="row mt-3">
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <b><i class="fa fa-hashtag text-primary"></i>Plate No:</b>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['vehicle_number'] ?>">
-          </div>
-
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <b><i class="fa fa-hashtag text-primary"></i> Root No:</b>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['root_number'] ?>">
-          </div>
-        </div>
-
-        <hr>
-
-        <!-- violation row -->
-        <div class="row mt-3">
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <b> <i class="fa fa-file text-primary"></i> Violation:</b>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['violation'] ?>">
-          </div>
-
-        </div>
-
-
-        <div class="row mt-3">
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <b><i class="fa fa-list-alt text-primary"></i> Type:</b>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['vtype'] ?>">
-          </div>
-
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <b><i class="fa fa-ban text-primary"></i> Penalt:</b>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input type="text" class="form-control" id="full-name" value="<?php echo $res['penalt'] ?>">
-          </div>
-        </div>
-        <hr>
-<!-- control number  -->
-<div class="row mt-5">
-
-<div class="col-lg-6 col-md-6 col-sm-6">
-  <b> <i class="fa fa-hashtag text-primary"></i> Your Control Number:</b>
-</div>
-
-<div class="col-lg-6 col-md-6 col-sm-6">
-  <input type="text" class="form-control" id="full-name" value="<?php echo $res['control_number'] ?>">
-</div>
-
-</div>
-
-<!-- receipt number  -->
-<div class="row mt-3">
-
-<div class="col-lg-6 col-md-6 col-sm-6">
-  <b> <i class="fa fa-file text-primary"></i> Enter Reference:</b>
-</div>
-
-<div class="col-lg-6 col-md-6 col-sm-6">
-  <input type="number" class="form-control" id="full-name" placeholder="enter reference number">
-</div>
-
-</div>
-
-
-
-    
 
 
 
@@ -258,23 +265,37 @@ $res = $stmt->fetch();
 
 
         <!-- -----------------------footer buttons link--------------------  -->
-<hr>
-        <footer class="mobile-footer">
+        
+        <footer class="mobile-footer ">
 
-          <div class="row">
+          <div class="row pl-3 pt-5">
 
-          <div class="col-lg-4 col-md-4 col-4">
-              <a href="#" class="btn btn-primary shadow", style="width: 70px;">
-                <i class="fa fa-spinner"></i>
-              </a>
+            <div class="col-lg-4 col-md-4 col-4 pl-3">
+
+              <?php if (!isset($ctrlnum)) { ?>
+                <a href="accuse-page-04.php?cotrol=true" class="btn btn-primary shadow" , style="width: 70px;">
+                  <i class="fa fa-spinner"></i>
+                </a>
+              <?php } else { ?>
+
+                <a href="#" class="btn btn-primary shadow" , style="width: 70px;">
+                  <i class="fa fa-spinner"></i>
+                </a>
+
+              <?php } ?>
+
 
               <hr style="width: 70px;">
+
               <span class="btn-label text-secondary">Generate</span>
+
+              <?php ?>
+
             </div>
 
 
-            <div class="col-lg-4 col-md-4 col-4">
-              <a href="#" class="btn btn-primary shadow", style="width: 70px;">
+            <div class="col-lg-4 col-md-4 col-4 pr-4">
+              <a href="#" class="btn btn-primary shadow" , style="width: 70px;">
                 <i class="fa fa-check"></i>
               </a>
 
@@ -284,15 +305,15 @@ $res = $stmt->fetch();
 
 
 
-            <div class="col-lg-4 col-md-4 col-4">
+            <div class="col-lg-4 col-md-4 col-4 pr-5">
               <a href="#" class="btn btn-primary shadow" style="width: 70px;">
-              <i class="fa fa-file-export"></i>              </a>
+                <i class="fa fa-file-export"></i> </a>
 
               <hr style="width: 70px;">
               <span class="btn-label text-secondary">Receipt</span>
             </div>
 
-          
+
 
 
 

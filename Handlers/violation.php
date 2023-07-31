@@ -24,7 +24,7 @@ $stmt->execute(array(":violation"=>$violation, ":vtype"=>$type, ":penalt"=>$pena
 
 
 
-   header('location:../add-violation.php');
+   header('location:../view-violations.php');
     
 
 

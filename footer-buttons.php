@@ -1,6 +1,5 @@
 
   
-  
   <footer class="mobile-footer bg-white">
   <div class="row d-flex justify-content-center">
 

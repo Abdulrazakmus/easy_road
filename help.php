@@ -42,7 +42,7 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
     <div class="col-lg-4 col-md-6">
 
 <!-- first row which have icons and name on top -->
-<div class="row">
+<div class="row" id="header-mobile">
 
     <div class="col-lg-4 col-md-4 col-4">
         <div class="nav-item">

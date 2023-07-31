@@ -1,10 +1,30 @@
 
 <?php 
 include './Handlers/connection.php';
-  
+// creating a session 
+    // session_start();
+    // if(!isset($_SESSION['role'])){
+// if session is not set yet retun a user to a login form through link down below 
+      // header('location:index.php');
+    // }
+    
     // links included
     include 'links.php'; 
-    ?>
+
+
+
+    // Getting ID from view user page to edit user page 
+    $userid = $_GET['id'];
+
+
+    $stmt = $conn->prepare("SELECT * FROM police_man, user, police_station WHERE police_man.user_id = user.user_id AND user.user_id = $userid AND police_man.police_station_id = police_station.police_station_id");
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+      ?>
+
+    
 
 
 <body class="item-align-center">
@@ -35,7 +55,7 @@ if($_SESSION['role']=="admin"){
 
     <div class="col-lg-4 col-md-4 col-4">
         <div class="nav-item">
-            <a href="user.php" class="btn btn-primary shadow">
+            <a href="view-users.php" class="btn btn-primary shadow">
                 <i class="fa fa-arrow-left"></i>
               </a>
         </div>
@@ -58,16 +78,13 @@ if($_SESSION['role']=="admin"){
 </div>
 <!-- end of the firs row -->
 
-
 <hr>
-<div class="d-flex justify-content-center"><p><b>Register Police Officer</b></p></div>
+<div class="d-flex justify-content-center"><p><b>Add New Violation</b></p></div>
 <hr>
-
-
 
 
 <!-- -------------------form------------- -->
-<form class="#" method="POST" action="./Handlers/register-police-officer.php">
+<form class="#" method="POST" action="./Handlers/edit-police-officer.php">
 
 <div class="row">
 
@@ -76,7 +93,7 @@ if($_SESSION['role']=="admin"){
   <label for="full-name">
     <i class="fa fa-user text-primary"></i> Full Name
   </label>
-  <input type="text" class="form-control" id="full-name" placeholder="Enter full name" name="fname" required>
+  <input value="<?php echo $row['name']; ?>" type="text" class="form-control" id="full-name" placeholder="Enter full name" name="fname" required>
 </div>
   </div>
 
@@ -87,12 +104,12 @@ if($_SESSION['role']=="admin"){
     <i class="fas fa-venus-mars text-primary"></i> Stations
   </label>
   <select class="form-control" id="gender" name="station" required>
-    <option value="default">---Select station---</option>
+  <option value="<?php echo $row['station_name']; ?>"><?php echo $row['station_name']; ?></option>
 
 
 
     <?php
-
+require_once("./Handlers/connection.php");
   $stmt = $conn->prepare("SELECT * FROM `police_station`");
   $stmt->execute();
   $result=$stmt->fetchAll();
@@ -103,7 +120,7 @@ foreach($result as $res){
 
     ?>
 
-    <option value="<?php  echo $res['police_station_id'] ?>"><?php  echo $res['station_name'] ?> </option>
+    <option value="<?php  echo $res['police_station_id'] ?>"><?php  echo $res['name'] ?> </option>
 
     <?php
 }
@@ -121,7 +138,7 @@ foreach($result as $res){
   <label for="phone-number">
     <i class="fa fa-phone text-primary"></i> Phone Number
   </label>
-  <input type="tel" class="form-control" id="full-name" placeholder="Enter number" name="phone-number" required>
+  <input value="<?php echo $row['phone_number']; ?>" type="tel" class="form-control" id="full-name" placeholder="Enter number" name="phone-number" required>
 </div>
   </div>
 
@@ -132,7 +149,7 @@ foreach($result as $res){
   <label for="email">
     <i class="fa fa-envelope text-primary"></i> Email
   </label>
-  <input type="email" class="form-control" id="full-name" placeholder="Enter email" name="email" required>
+  <input value="<?php echo $row['email']; ?>" type="email" class="form-control" id="full-name" placeholder="Enter email" name="email" required>
 </div>
   </div>
 </div>
@@ -147,7 +164,7 @@ foreach($result as $res){
     <i class="fas fa-venus-mars text-primary"></i> Gender
   </label>
   <select class="form-control" id="gender" name="gender" required>
-    <option value="">Select police gender</option>
+  <option value="<?php echo $row['gender']; ?>"><?php echo $row['gender']; ?></option>
     <option value="male">Male</option>
     <option value="female">Female</option>
   </select>
@@ -159,7 +176,7 @@ foreach($result as $res){
   <label for="email">
     <i class="fa fa-key text-primary"></i> password
   </label>
-  <input type="password" class="form-control" id="full-name" placeholder="Enter password" name="password" required>
+  <input  type="password" class="form-control" id="full-name" placeholder="Enter password" name="password" required>
 </div>
 
 
@@ -167,10 +184,23 @@ foreach($result as $res){
 </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-6 col-md-6 col-sm-6">
+
+
+
+<!-- Hiden Input Used to pass ID which we can use it in its hendler -->
+<input type="hidden" name="userid" value="<?php echo $userid ?>">
+<!-- Hiden Input Used to pass ID which we can use it in its hendler -->
+
+
+
+
+
+
+
+<div class="row justify-content-center">
+  <div class="col-lg-12 col-md-12 col-sm-12 text-center">
   <button type="submit" class="btn btn-primary shadow" name="submit">
-      Register Officer  <i class="fa fa-user-plus"></i>
+      Update  <i class="fab fa-save"></i>
     </button>
   </div>
 
@@ -178,18 +208,13 @@ foreach($result as $res){
 </div>
 
 
-<!-- Police registration button  -->
-<!-- <div class="row justify-content-center"> -->
-  <!-- <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-    <button type="submit" class="btn btn-primary shadow" name="submit">
-      Register Officer  <i class="fa fa-user-plus"></i>
-    </button>
-  </div>
-</div> -->
-
 
 
 </form>
+
+
+
+
 <?php
 }
 ?>
@@ -199,6 +224,7 @@ foreach($result as $res){
 
 
 <hr>
+   
 
 
 

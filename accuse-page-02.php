@@ -24,7 +24,7 @@
       <div class="col-lg-4 col-md-6">
 
         <!-- first row which have icons and name on top -->
-        <div class="row">
+        <div class="row" id="header-mobile">
 
           <div class="col-lg-4 col-md-4 col-4">
             <div class="nav-item">
@@ -52,7 +52,7 @@
         <!-- end of the firs row -->
 
         <hr>
-        <div class="text-center ">
+        <div class="text-center pt-4">
           <i class="fa fa-car text-primary"></i>
           <h6>Vehicle's informations</h6>
         </div>
@@ -82,15 +82,15 @@
             <input type="text" class="form-control" placeholder="Enter a vehicle's colour" name="vcolour">
           </div>
 
-         <hr>
 
-          <!-- <a  class="text-white" href="accuse-page-03.php"  > -->
+
+         <div id="next-back-btn"> 
           <button type="submit" name="submit" class="btn btn-primary shadow float-right">Next <i class="fas fa-arrow-right"></i></a> </button>
-          <!-- </a> -->
 
           <a  class="text-white" href="accuse-page-01.php"  >
           <button type="submit" class="btn btn-primary shadow float-left"><i class="fas fa-arrow-left"></i>  Back </a> </button>
           </a>
+         </div>
 
         </form>
         <!-- -----------------------End of This Form-------------------------------- -->

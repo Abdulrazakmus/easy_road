@@ -6,7 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help</title>
-    <?php include 'links.php'; ?>
+    <?php include 'links.php';
+
+include './Handlers/connection.php';
+
+    
+    $ID = $_SESSION['userName'];
+
+
+   
+    
+        $stmt = $conn->prepare("SELECT * FROM `user` WHERE user_name = :user");
+        $stmt->execute(array(":user"=> $ID ));
+        $result = $stmt->fetch();
+
+
+    
+    
+    ?>
 
 </head>
 
@@ -24,7 +41,7 @@
       <div class="col-lg-4 col-md-6">
 
         <!-- first row which have icons and name on top -->
-        <div class="row">
+        <div class="row" id="header-mobile">
 
           <div class="col-lg-4 col-md-4 col-4">
             <div class="nav-item">
@@ -63,9 +80,9 @@
               <img class="img-fluid" width="96" height="96" src="Assets/img/user.png" alt="image">
             </div>
             <div class="content">
-              <h2 class="name">Abdul</h2>
-              <span class="email">abdul@gmail.com</span>
-              <span class="id-num">ID NO: ZNZ 2023</span>
+              <h2 class="name"><?php echo $_SESSION['userName']?></h2>
+              <span class="email"><?php echo $result['email'] ?></span>
+              <span class="id-num"><?php echo $_SESSION['role']?></span>
             </div>
             <div class="profile-shape profile-shape-2"><img class="img-fluid" width="48" height="59"
                 src="Assets/img/profile-shape-2.svg" alt="image"></div>
@@ -73,10 +90,10 @@
 
         </div>
         <!-- --------------End Profile Card Section------------ -->
-
+<br>
         <hr>
 
-
+<br>
 
         <!-- ---------------------This is Form-------------------- -->
         <form class="mt-1">
@@ -102,17 +119,7 @@
             <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
           </div>
 
-          <div class="form-group">
-            <label for="gender">
-              <i class="fas fa-venus-mars text-primary"></i> Gender
-            </label>
-            <select class="form-control" id="gender">
-              <option value="">Select your gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+        
 
           <div class="form-group">
             <label for="phone">
@@ -120,6 +127,8 @@
             </label>
             <input type="password" class="form-control" id="pass" placeholder="Enter new password">
           </div>
+
+<br>
 
           <button type="submit" class="btn btn-primary btn-block shadow">
             <i class="fas fa-save"></i> Save

@@ -45,7 +45,7 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
       <div class="col-lg-4 col-md-6">
 
         <!-- first row which have icons and name on top -->
-        <div class="row">
+        <div class="row" id="header-mobile">
 
           <div class="col-lg-4 col-md-4 col-4">
             <div class="nav-item">
@@ -84,8 +84,11 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
 
         
         <!-- ------------------------------Violation Table---------------------- -->
-     <!-- Search Bar -->
-<form action="help.php" method="POST">
+
+
+
+<!-- Search Bar -->
+<form action="view-violations.php" method="POST">
 
 <div class="input-group mb-3 mt-4">
     <input type="text" class="form-control search" name="search" placeholder="Search"value="<?php echo $search; ?>" >
@@ -98,6 +101,24 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
 
   <!-- Search Bar end -->
 
+  <?php
+if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
+
+?>
+  <!-- Add Violation Button  -->
+  <div>
+  <a href="add-violation.php" class="btn btn-primary">Add  Violation  <i class="fa fa-plus"></i></a>
+
+  </div>
+
+<?php 
+}
+?>
+  
+
+
+<br>
+    <!-- Add Violation Button End  -->
 
         <div class="table-responsive">
 
@@ -108,7 +129,18 @@ if (isset($_POST["search"]) && $_POST["search"] != ""){
               <th>Violation</th>
               <th>Type</th>
               <th>Penalty</th>
+
+              <?php
+if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
+
+  ?>
               <th></th>
+              <th></th>
+
+              <?php
+}
+?>
+
             </tr>
           </thead>
           <tbody>
@@ -131,8 +163,18 @@ $no++;
               <td value="#"><?php  echo $res['violation'] ?></td>
               <td value="#"><?php  echo $res['vtype'] ?></td>
               <td value="#"><b>Tsh </b><?php  echo $res['penalt'] ?></td>
-              <td class="btn btn-danger"> Delete </td>
-              <!-- <td> <a href="./Handlers/delete-violation.php?id=<?php echo $res['#'] ?>" class="btn btn-danger" onclick="return confirm('Click OK if you really want to delete violation')">Delete</a></td> -->
+
+              <?php
+if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
+
+?>
+
+                  <td> <a href="./Handlers/delete-violation.php?id=<?php echo $res['violation_id'] ?>" class="btn btn-danger" onclick="return confirm('Click OK if you really want to delete Violation')"><i class="fa fa-trash"></i></a></td>
+                  <td value="#"> <a href="edit-violations.php?id=<?php echo $res["violation_id"]?>" class="btn btn-success"><i class="fa fa-edit"> </i> </a></td>
+
+              <?php
+}
+?>
 
             </tr>
           

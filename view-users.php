@@ -74,7 +74,7 @@ if (isset($_POST["search2"]) && $_POST["search2"] != "") {
       <div class="col-lg-4 col-md-6">
 
         <!-- first row which have icons and name on top -->
-        <div class="row">
+        <div class="row" id="header-mobile">
 
           <div class="col-lg-4 col-md-4 col-4">
             <div class="nav-item">
@@ -145,6 +145,7 @@ if (isset($_POST["search2"]) && $_POST["search2"] != "") {
                 <th>User Name</th>
                 <th>Email</th>
                 <th></th>
+                <th></th>
 
               </tr>
             </thead>
@@ -165,9 +166,13 @@ if (isset($_POST["search2"]) && $_POST["search2"] != "") {
                   <td value="#"><?php echo $no; ?></td>
                   <td value="#"><?php echo $res['user_name'] ?></td>
                   <td value="#"><?php echo $res['email'] ?></td>
+                  
 
 
-                  <td> <a href="./Handlers/delete-user.php?id=<?php echo $res['user_id'] ?>" class="btn btn-danger" onclick="return confirm('Click OK if you really want to delete user')">Delete</a></td>
+                  <td> <a href="./Handlers/delete-user.php?id=<?php echo $res['user_id'] ?>" class="btn btn-danger" onclick="return confirm('Click OK if you really want to delete user')"><i class="fa fa-trash"></i></a></td>
+                  <!-- Sending ID from This Page to Edit User page  -->
+                  <td value="#"> <a href="edit-users.php?id=<?php echo $res["user_id"]?>" class="btn btn-success"><i class="fa fa-edit"> </i> </a></td>
+
                 </tr>
 
 
@@ -225,6 +230,7 @@ if (isset($_POST["search2"]) && $_POST["search2"] != "") {
                 <th>User Name</th>
                 <th>Email</th>
                 <th></th>
+                <th></th>
 
               </tr>
             </thead>
@@ -246,9 +252,9 @@ if (isset($_POST["search2"]) && $_POST["search2"] != "") {
                   <td value="#"><?php echo $no; ?></td>
                   <td value="#"><?php echo $res['name'] ?></td>
                   <td value="#"><?php echo $res['email'] ?></td>
+                  <td> <a href="./Handlers/delete-user.php?id=<?php echo $res['user_id'] ?>" class="btn btn-danger" onclick="return confirm('Click OK if you really want to delete user')"><i class="fa fa-trash"></i></a></td>
+                  <td value="#"> <a href="edit-users.php?id=<?php echo $res["user_id"]?>" class="btn btn-success"><i class="fa fa-edit"> </i> </a></td>
 
-
-                  <td> <a href="./Handlers/delete-user.php?id=<?php echo $res['user_id'] ?>" class="btn btn-danger" onclick="return confirm('Click OK if you really want to delete user')">Delete</a></td>
                 </tr>
 
 

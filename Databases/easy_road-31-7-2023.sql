@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2023 at 10:19 PM
+-- Generation Time: Jul 31, 2023 at 05:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,13 +38,15 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`bill_id`, `control_number`, `violation_id`) VALUES
-(1, 2147483647, 2),
-(2, 2147483647, 2),
-(3, 2147483647, 2),
-(4, 2147483647, 2),
-(5, 2147483647, 2),
-(6, 2147483647, 2),
-(7, 2147483647, 2);
+(20, 0, 11),
+(21, 0, 11),
+(22, 0, 11),
+(23, 0, 11),
+(24, 0, 11),
+(25, 0, 11),
+(26, 0, 11),
+(27, 0, 11),
+(28, 0, 11);
 
 -- --------------------------------------------------------
 
@@ -71,12 +73,18 @@ CREATE TABLE `driver` (
 --
 
 INSERT INTO `driver` (`driver_id`, `name`, `age`, `gender`, `living_place`, `phone_number`, `license_number`, `vehicle_number`, `root_number`, `vcolour`, `police_man_id`) VALUES
-(1, 'Abdull', 20, 'male', 'Tunguu', '+255623409095', 'ZNZ-2023', 'NC 5787', 3456, 'Blue', 27),
-(3, 'Abdull Majid', 25, 'male', 'Tunguu', '+255623409095', 'ZNZ-875', 'EJ 2332', 7567, 'red', 27),
-(4, 'Yussuf kai', 28, 'male', 'Gulion', '7774646363', 'ZNZ-34567', 'GI 6643', 56767, 'Green', 27),
-(5, 'Shamis', 45, 'male', 'kwerekwe', '7778 6522', 'ZNZ-2023', 'NC 5787', 0, 'black', 27),
-(6, 'usama', 35, 'male', 'kwa mchina', '34567890', 'ZNZ-4567', 'CB 675', 0, 'red', 2),
-(7, 'usama', 18, 'other', 'kwa mchina', '4567', 'ZNZ-2023', 'NC 5787', 0, 'black', 2);
+(11, 'abdul aziz', 23, 'male', 'mtendeni', '12345678', 'ZNZ-2023', 'NC 5787', 0, 'red', 34),
+(12, 'Tunguu', 778415671, 'male', 'Tunguu', '0778415671', 'ZNZ-2023', 'NC 5787', 0, 'black', 34),
+(13, 'Ahmad', 25, 'male', 'tunguu', '2345678907', 'ZNZ-2023', 'NC 5787', 0, 'black', 35),
+(14, 'Tunguu', 778415671, 'male', 'Tunguu', '3456789', 'ZNZ-2023', 'NC 5787', 0, 'black', 35),
+(15, 'ali', 19, 'male', 'Tunguu', '0778415671', 'ZNZ-2023', 'GI 6643', 5678, 'black', 35),
+(16, 'Tunguu', 778415671, 'male', 'Tunguu', '0778415671', 'ZNZ-2023', 'NC 5787', 0, 'red', 35),
+(17, 'Tanzania', 778415671, 'female', 'Tunguu', '0778415671', 'ZNZ-2023', 'NC 5787', 345, 'Blue', 35),
+(18, 'Tunguu', 778415671, 'male', 'Tunguu', '0778415671', 'ZNZ-2023', 'NC 5787', 767, 'black', 35),
+(19, 'usama', 45, 'female', 'mombasa', '34567890', 'ZNZ-2023', 'NC 5787', 0, 'Green', 35),
+(20, 'usama', 45, 'male', 'Tunguu', '0778415671', 'ZNZ-2023', 'NC 5787', 0, 'red', 35),
+(21, 'Tunguu', 778415671, 'male', 'ee', '422', 'rewr', 'NC 5787', 0, 'wef', 34),
+(22, 'Tunguu', 778415671, 'male', 'Tunguu', '0778415671', 'ZNZ34567', 'NC 5787', 0, 'black', 34);
 
 -- --------------------------------------------------------
 
@@ -97,12 +105,16 @@ CREATE TABLE `driver_violation` (
 --
 
 INSERT INTO `driver_violation` (`dv_id`, `driver_id`, `violation_id`, `police_man_id`, `date`) VALUES
-(2, 3, 2, 21, '2023-06-25 06:34:17'),
-(3, 3, 2, 21, '2023-06-25 06:35:53'),
-(6, 4, 2, 21, '2023-06-25 06:59:06'),
-(7, 5, 2, 21, '2023-06-25 07:09:16'),
-(8, 6, 2, 21, '2023-06-26 09:08:15'),
-(9, 7, 2, 21, '2023-06-26 09:27:10');
+(36, 18, 11, 29, '2023-07-31 10:37:34'),
+(37, 18, 11, 29, '2023-07-31 10:39:41'),
+(38, 18, 11, 29, '2023-07-31 10:40:33'),
+(39, 19, 11, 29, '2023-07-31 10:43:03'),
+(40, 19, 11, 29, '2023-07-31 10:49:19'),
+(41, 20, 11, 29, '2023-07-31 11:00:59'),
+(42, 20, 11, 29, '2023-07-31 11:03:23'),
+(43, 20, 11, 29, '2023-07-31 11:05:16'),
+(44, 22, 11, 29, '2023-07-31 14:26:42'),
+(45, 22, 11, 29, '2023-07-31 14:28:29');
 
 -- --------------------------------------------------------
 
@@ -124,10 +136,9 @@ CREATE TABLE `police_man` (
 --
 
 INSERT INTO `police_man` (`police_man_id`, `user_id`, `name`, `gender`, `phone_number`, `police_station_id`) VALUES
-(21, 25, 'officer1', 'male', '+255 978658', 2),
-(22, 26, 'officer2', 'male', '456789022', 3),
-(23, 27, 'police1', 'male', '2345678922', 2),
-(24, 28, 'police2', 'male', '234567890', 2);
+(29, 33, 'officer2', 'male', '+255 98765443', 2),
+(30, 35, 'police5', 'male', '0778415671', 2),
+(31, 36, 'Shamis', 'male', '234567890', 2);
 
 -- --------------------------------------------------------
 
@@ -137,7 +148,7 @@ INSERT INTO `police_man` (`police_man_id`, `user_id`, `name`, `gender`, `phone_n
 
 CREATE TABLE `police_station` (
   `police_station_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `station_name` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL,
   `phone_number` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
@@ -147,7 +158,7 @@ CREATE TABLE `police_station` (
 -- Dumping data for table `police_station`
 --
 
-INSERT INTO `police_station` (`police_station_id`, `name`, `location`, `phone_number`, `email`) VALUES
+INSERT INTO `police_station` (`police_station_id`, `station_name`, `location`, `phone_number`, `email`) VALUES
 (2, 'Tunguu Police Station', 'Mkoa Wa Kusini Unguja', '+255 777 777 777', 'tunguustation@gmail.com'),
 (3, 'Fuoni Police Station ', 'Mkoa Mjini Maghribi', '+255 888 888 888', 'fuonistation@gmail.com');
 
@@ -159,7 +170,8 @@ INSERT INTO `police_station` (`police_station_id`, `name`, `location`, `phone_nu
 
 CREATE TABLE `receipt` (
   `receipt_id` int(11) NOT NULL,
-  `bill_id` int(11) NOT NULL
+  `bill_id` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -201,11 +213,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_pass`, `email`, `role_id`) VALUES
-(2, 'abdul', '8cb2237d0679ca88db6464eac60da96345513964', 'abdul@gmail.com', 1),
-(25, 'officer1', '8cb2237d0679ca88db6464eac60da96345513964', 'of.1@gmail.com', 2),
-(26, 'officer2', '8cb2237d0679ca88db6464eac60da96345513964', 'of.2@gmail.com', 2),
-(27, 'police1', '8cb2237d0679ca88db6464eac60da96345513964', 'police1@gmaill.com', 3),
-(28, 'police2', '8cb2237d0679ca88db6464eac60da96345513964', 'police2@gmail.com', 3);
+(33, 'officer2', '8cb2237d0679ca88db6464eac60da96345513964', 'of.1@gmail.com', 2),
+(34, 'abdul', '8cb2237d0679ca88db6464eac60da96345513964', 'abdul@gmail.com', 1),
+(35, 'police5', '8cb2237d0679ca88db6464eac60da96345513964', 'pl.5@gmail.com', 3),
+(36, 'Shamis', '8cb2237d0679ca88db6464eac60da96345513964', 'shamis@gmail.com', 3);
 
 -- --------------------------------------------------------
 
@@ -225,11 +236,12 @@ CREATE TABLE `violation` (
 --
 
 INSERT INTO `violation` (`violation_id`, `violation`, `vtype`, `penalt`) VALUES
-(1, 'High Speed', 'major', 50000),
-(2, 'License Expire', 'middle', 25000),
-(4, 'Helment', 'middle', 50),
-(11, 'Insuarance Expire', 'major', 5000),
-(12, 'Road Licence Expire', 'major', 35000);
+(11, 'Insuarance Expire', 'middle', 5000),
+(12, 'Road Licence Expire', 'major', 35000),
+(13, 'Reflactor Triangle', 'middle', 23000),
+(16, 'Reflactor Triangle', 'middle', 23000),
+(20, 'No Helment', 'middle', 15000),
+(21, 'High Speed Drive', 'major', 100000);
 
 --
 -- Indexes for dumped tables
@@ -306,25 +318,25 @@ ALTER TABLE `violation`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `driver`
 --
 ALTER TABLE `driver`
-  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `driver_violation`
 --
 ALTER TABLE `driver_violation`
-  MODIFY `dv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `dv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `police_man`
 --
 ALTER TABLE `police_man`
-  MODIFY `police_man_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `police_man_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `police_station`
@@ -336,7 +348,7 @@ ALTER TABLE `police_station`
 -- AUTO_INCREMENT for table `receipt`
 --
 ALTER TABLE `receipt`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -348,13 +360,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `violation`
 --
 ALTER TABLE `violation`
-  MODIFY `violation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `violation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

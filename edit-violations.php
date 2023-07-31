@@ -10,7 +10,21 @@ include './Handlers/connection.php';
     
     // links included
     include 'links.php'; 
-    ?>
+
+
+
+    // Getting ID from view user page to edit user page 
+    $violation_id = $_GET['id'];
+
+
+    $stmt = $conn->prepare("SELECT * FROM violation WHERE violation_id=$violation_id");
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+      ?>
+
+    
 
 
 <body class="item-align-center">
@@ -32,8 +46,6 @@ include './Handlers/connection.php';
 <?php
 if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
 
-
-
 ?>
 
 <!-- first row which have icons and name on top -->
@@ -41,7 +53,7 @@ if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
 
     <div class="col-lg-4 col-md-4 col-4">
         <div class="nav-item">
-            <a href="user.php" class="btn btn-primary shadow">
+            <a href="view-violations.php" class="btn btn-primary shadow">
                 <i class="fa fa-arrow-left"></i>
               </a>
         </div>
@@ -69,9 +81,8 @@ if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
 <hr>
 
 
-
 <!-- -------------------form------------- -->
-<form class="#" method="POST" action="./Handlers/violation.php">
+<form class="#" method="POST" action="./Handlers/edit-violations.php">
 
 <div class="row">
 
@@ -80,9 +91,14 @@ if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
   <label for="violation">
     <i class="fa fa-user text-primary"></i> Violation
   </label>
-  <input type="text" class="form-control"  placeholder="Enter violation" name="violation" required>
+  <input value="<?php echo $row['violation']; ?>" type="text" class="form-control"  placeholder="Enter violation" name="violation" required>
+
+ 
 </div>
   </div>
+
+   <!-- Hiden Input Used to pass ID which we can use it in its hendler -->
+   <input value="<?php echo $violation_id?>" type="text" name="violation_id" id="" hidden>
 
 
 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -91,7 +107,7 @@ if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
     <i class="fas fa-venus-mars text-primary"></i> Violation Type
   </label>
   <select class="form-control" id="#" name="vtype" required>
-    <option value="default" selected>---Select Type---</option>
+    <option value="<?php echo $row['vtype']; ?>"><?php echo $row['vtype']; ?></option>
 
 <option value="minor">Minor</option>
 <option value="middle">Middle</option>
@@ -108,7 +124,7 @@ if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
   <label for="penalt">
     <i class="fa fa-ban text-primary"></i> Penalt
   </label>
-  <input type="number" class="form-control"  placeholder="Enter number" name="penalt" required>
+  <input value="<?php echo $row['penalt']; ?>" type="number" class="form-control"  placeholder="Enter number" name="penalt" required>
 </div>
   </div>
 
@@ -118,7 +134,7 @@ if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
     <i class="text-primary"></i>
   </label>
     <button type="submit" class="btn btn-primary shadow" name="submit">
-      Add New Violation <i class="fa fa-file"></i>
+      Update <i class="fa fa-file"></i>
     </button>
   </div>
 </div>
@@ -134,6 +150,9 @@ if($_SESSION['role']=="admin" || $_SESSION['role']=="Chief_Officer"){
 
 
 </form>
+
+
+
 <?php
 }
 ?>

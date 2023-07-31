@@ -19,7 +19,7 @@
     <div class="col-lg-4 col-md-6">
 
 <!-- first row which have icons and name on top -->
-<div class="row">
+<div class="row" id="header-mobile">
 
     <div class="col-lg-4 col-md-4 col-4">
         <div class="nav-item">
@@ -45,8 +45,12 @@
 
 </div>
 <!-- end of the firs row -->
+<!-- ------------------------------------------------------------------------------------------ -->
 
 
+
+
+<section> 
 <!-- Search Bar -->
 <div class="input-group mb-3 mt-4">
     <input type="text" class="form-control search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
@@ -77,7 +81,7 @@
 
         <div class="carousel-caption">
             <h3>Updates!</h3>
-            <p>Here You can see all system updates</p>
+            <p>See All System From Updates</p>
           </div>
       </div>
 
@@ -86,7 +90,7 @@
 
         <div class="carousel-caption">
             <h3>News</h3>
-            <p>See all systemm news here</p>
+            <p>See Recent News From Here</p>
           </div>
       </div>
 
@@ -94,8 +98,8 @@
         <img src="Assets/img/picture 3.jpg" alt="picture three">
 
         <div class="carousel-caption">
-            <h3>Matukio</h3>
-            <p>Ona Taarifa Hapa</p>
+            <h3>Accidents</h3>
+            <p>View Accidents Details From Here</p>
           </div>
       </div>
 
@@ -173,8 +177,9 @@ if($_SESSION['role']=="Chief_Officer"){
 <div class="d-flex justify-content-center"><p><b>Register Police Here</b></p></div>
 <hr>
 
+<div id="reg-form">
 
-<form class="#" method="POST" action="./Handlers/register-police.php">
+<form  method="POST" action="./Handlers/register-police.php">
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12">
   <div class="form-group">
@@ -237,7 +242,7 @@ if($_SESSION['role']=="Chief_Officer"){
 
 
 <!-- Police registration button  -->
-<div class="row justify-content-center p-2">
+<div class="row justify-content-center">
   <div class="col-lg-12 col-md-12 col-sm-12 text-center">
     <button type="submit" class="btn btn-primary shadow" name="submit">
       Register Police Here <i class="fa fa-user-plus"></i>
@@ -245,8 +250,9 @@ if($_SESSION['role']=="Chief_Officer"){
   </div>
 </div>
 
-
+<br>
 </form>
+</div>
 <?php
 }
 ?>
@@ -276,6 +282,8 @@ if($_SESSION['role']=="admin"){
 
 
 <!-- -------------------form------------- -->
+<div id="reg-form">
+
 <form class="#" method="POST" action="./Handlers/register-police-officer.php">
 
 <div class="row">
@@ -296,7 +304,7 @@ if($_SESSION['role']=="admin"){
     <i class="fas fa-venus-mars text-primary"></i> Stations
   </label>
   <select class="form-control" id="gender" name="station" required>
-    <option value="default">---Select station---</option>
+    <option value="station_name">---Select station---</option>
 
 
 
@@ -312,7 +320,7 @@ foreach($result as $res){
 
     ?>
 
-    <option value="<?php  echo $res['police_station_id'] ?>"><?php  echo $res['name'] ?> </option>
+    <option value="<?php  echo $res['police_station_id'] ?>"><?php  echo $res['station_name'] ?> </option>
 
     <?php
 }
@@ -386,10 +394,11 @@ foreach($result as $res){
   
 </div>
 
-
+<br>
 
 
 </form>
+</div>
 <?php
 }
 ?>
@@ -404,23 +413,30 @@ if($_SESSION['role']=="police_man"){
 
 ?>
 
-<div>
+
+<div class="row">
+
+<div class="col-sm-4 col-md-4 col-lg-4">
+<div class="btn btn-primary">
 <i class="fa fa-bell"></i>
 <a href="#">Recent updates</a>
 </div>
+</div>
 
-<br>
+<div class="col-sm-4 col-md-4 col-lg-4">
+<div class="btn btn-primary">
+<i class="fa fa-bell "></i>
+<a href="#">Recent updates</a>
+</div>
+</div>
 
-<div>
+<div class="col-sm-4 col-md-4 col-lg-4">
+<div class="btn btn-primary">
 <i class="fa fa-bell"></i>
 <a href="#">Recent updates</a>
 </div>
+</div>
 
-<br>
-
-<div>
-<i class="fa fa-bell"></i>
-<a href="#">Recent updates</a>
 </div>
 
 <br>
@@ -432,9 +448,8 @@ if($_SESSION['role']=="police_man"){
 ?>
 <!-- -----------------Normal Police Secttion end---------- -->
 
-
-
-
+</section>
+<!-- ---------------------------------------------------------------------------------------------------- -->
 
 <!-- -----------------------footer buttons link--------------------  -->
 
