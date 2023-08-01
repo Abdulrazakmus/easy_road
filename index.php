@@ -40,7 +40,7 @@
         <div class="form-check">
             
             <input type="checkbox" class="form-check-input" id="remember">
-            <label for="remember"> Remember Password</label>
+            <label for="remember"> Remember password</label>
         </div>
         <a href="forgot-password.php">Forgot Password?</a>
     </div>
